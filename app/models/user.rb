@@ -5,7 +5,8 @@ class User < ApplicationRecord
 
   validates :email, presence: { message: '邮箱不能为空' }
   validates :email, uniqueness: true
-  validates :email, format: { with: /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/, message: '邮箱不合法' }
+  validates :email, format: { with: /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/, message: '邮箱不合法' },
+                    if: proc { |user| !user.email.blank? }
 
   validates :password,
             presence: { message: '密码不能为空' },
@@ -19,6 +20,10 @@ class User < ApplicationRecord
   validates :password,
             length: { minimum: 6, message: '密码最短为6位' },
             if: :need_validate_password
+
+  def username
+    self.email.split('@').first
+  end
 
   private
 

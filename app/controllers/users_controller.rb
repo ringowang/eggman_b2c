@@ -1,4 +1,4 @@
-# 
+# user
 class UsersController < ApplicationController
   def new
     @user = User.new
@@ -9,8 +9,8 @@ class UsersController < ApplicationController
       .permit(:email, :password, :password_confirmation))
 
     if @user.save
-      flash[:notice] = '注册成功'
-      redirect_to root_path
+      flash[:notice] = '注册成功,请登录'
+      redirect_to new_session_path
     else
       render action: :new
     end
