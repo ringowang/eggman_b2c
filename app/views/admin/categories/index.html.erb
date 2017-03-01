@@ -4,8 +4,12 @@
   </div>
 
   <h1>
-  <!-- total_entries由will_paginate提供 -->
-    分类(<%= @categories.total_entries %>)
+    <% if @category %>
+      分类:<%= @category.title %>(<%= @categories.total_entries %>)
+    <% else %>
+      <!-- total_entries由will_paginate提供 -->
+      分类(<%= @categories.total_entries %>)
+    <% end %>
   </h1>
 </div>
 
@@ -15,6 +19,7 @@
       <th>ID</th>
       <th>名称</th>
       <th>Weight</th>
+      <th></th>
     </tr>
 
     <% @categories.each do |category| %>
@@ -27,6 +32,7 @@
         <!-- data-confirm 是rails自带的jquery gem里面的 -->
         <%= link_to "删除", admin_category_path(category), method: :delete, 'data-confirm': "确认删除吗？" %>
         <% if category.root? %>
+          <%= link_to "查看子分类", admin_categories_path(id: category) %>
         <% end %>
       </td>
     </tr>
