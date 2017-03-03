@@ -9,7 +9,7 @@ AllCops:
     - 'bundle/**/*'
 
 Metrics/LineLength:
-    Max: 120
+    Max: 150
 
 Style/AsciiComments:
     Enabled: false

@@ -48,7 +48,7 @@
       <div class=col-sm-5>
         <select name="product[status]">
           <% [[Product::Status::On, '上架'],[Product::Status::Off,'下架']].each do |row| %>
-            <option value="<%= row.first %>" <%= 'selected' if @product.status = row.first %>><%= row.last %></option>
+            <option value="<%= row.first %>" <%= 'selected' if @product.status == row.first %>><%= row.last %></option>
           <% end %>
         </select>
       </div>

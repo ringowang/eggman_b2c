@@ -13,6 +13,11 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :product_images, -> { order(weight: 'desc') }, dependent: :destroy
 
+  # 解决n+1问题
+  has_one :main_product_image, -> { order(weight: 'desc') }, class_name: :ProductImage
+
+  scope :onshelf, -> { where(status: Status::On) }
+
   # uuid生成
   before_create :set_default_attrs
 

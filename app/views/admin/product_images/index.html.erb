@@ -1,7 +1,7 @@
 <div>
   <div class="pull-right">
     <%= form_tag admin_product_product_images_path(product_id: @product.id), method: :post,
-      multiple: :true, class: "form-horizontal" do %>
+      enctype: "multipart/form-data", class: "form-horizontal" do %>
       <input type="file" name="images[]" multiple class="image-input">
       <%= submit_tag "上传", classs: "btn btn-primary" %>
     <% end %>
