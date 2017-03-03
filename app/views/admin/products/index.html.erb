@@ -4,7 +4,7 @@
   </div>
 
   <h1>
-    商品<%= @products.total_entries %>
+    商品(<%= @products.total_entries %>)
   </h1>
 </div>
 
@@ -33,6 +33,7 @@
       <td align="right">
         <%= link_to "编辑", edit_admin_product_path(product) %>
         <%= link_to "删除", admin_product_path(product), method: :delete, 'data-confirm': "确认删除吗？" %>
+        <%= link_to "图片管理", admin_product_product_images_path(product_id: product.id) %>
       </td>
     </tr>
    <% end %>

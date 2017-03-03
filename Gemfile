@@ -36,6 +36,7 @@ gem 'font-awesome-rails'
 gem 'sorcery' # 用户管理
 gem 'ancestry' # 继承 父子结构
 gem 'will_paginate'
+gem 'paperclip', '~>5.0.0' # 图片的裁剪，缩放，传到第三方(aws,七牛)
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
